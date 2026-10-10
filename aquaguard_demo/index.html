@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AquaGuard | Smart Water Conservation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="drop">💧</span><div><h1>AquaGuard</h1><p>Smart Water Conservation</p></div></div>
+    <span class="demo-tag">HACKATHON DEMO · SIMULATED DATA</span>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <p class="nav-label">WORKSPACE</p>
+      <button class="nav active" data-view="dashboard">▦ &nbsp; Dashboard</button>
+      <button class="nav" data-view="reports">⚑ &nbsp; Leak Reports</button>
+      <button class="nav" data-view="maintenance">🔧 &nbsp; Maintenance</button>
+      <button class="nav" data-view="analytics">▥ &nbsp; Analytics</button>
+      <div class="side-note"><strong>Water matters.</strong><p>Find leaks early. Save every drop.</p></div>
+    </aside>
+    <main>
+      <section id="dashboard" class="view">
+        <div class="page-heading"><div><p class="eyebrow">CAMPUS OVERVIEW</p><h2>Water dashboard</h2><p class="muted">Monitor simulated water usage and leak reports.</p></div><button class="primary" id="quickReport">＋ Report a leak</button></div>
+        <div class="stats">
+          <article class="stat"><span>📋 Total reports</span><strong id="totalReports">4</strong><small>Across campus</small></article>
+          <article class="stat"><span>🚨 Active leaks</span><strong id="activeLeaks">2</strong><small class="warning">Needs attention</small></article>
+          <article class="stat"><span>✓ Resolved leaks</span><strong id="resolvedLeaks">2</strong><small class="good">Repair completed</small></article>
+          <article class="stat"><span>💧 Estimated saved</span><strong id="savedWater">1,250 L</strong><small class="good">Demo estimate</small></article>
+        </div>
+        <div class="grid-two">
+          <article class="panel"><div class="panel-title"><div><h3>Leak alerts</h3><p class="muted">Recent reports requiring attention</p></div><span class="pill red">Live demo</span></div><div id="alertList" class="alert-list"></div></article>
+          <article class="panel"><div class="panel-title"><div><h3>Weekly water usage</h3><p class="muted">Illustrative litres per day</p></div></div><div class="chart" id="usageChart"></div><div class="chart-legend"><span>● Water used</span><span>● Target usage</span></div></article>
+        </div>
+        <article class="panel"><div class="panel-title"><div><h3>Campus locations</h3><p class="muted">Current maintenance status</p></div></div><div id="locationList" class="locations"></div></article>
+      </section>
+
+      <section id="reports" class="view hidden">
+        <div class="page-heading"><div><p class="eyebrow">REPORTING</p><h2>Leak reports</h2><p class="muted">Submit a new report and track existing issues.</p></div><button class="primary" id="reportExport">Export CSV ↓</button></div>
+        <article class="panel"><h3>Report a leak</h3><form id="leakForm" class="form-grid">
+          <label>Campus location<input id="location" required placeholder="e.g. Science Block, Room 12"></label>
+          <label>Leak type<select id="leakType"><option>Leaking tap</option><option>Broken pipe</option><option>Overflowing tank</option><option>Toilet leak</option><option>Other</option></select></label>
+          <label>Priority<select id="priority"><option>Normal</option><option>High</option><option>Critical</option></select></label>
+          <label>Description<input id="description" required placeholder="Describe the problem"></label>
+          <button class="primary" type="submit">Submit report</button>
+        </form></article>
+        <article class="panel"><div class="panel-title"><h3>All reports</h3><button class="secondary" id="reportsExport">Download CSV</button></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>Location</th><th>Issue</th><th>Priority</th><th>Status</th></tr></thead><tbody id="reportRows"></tbody></table></div></article>
+      </section>
+
+      <section id="maintenance" class="view hidden">
+        <div class="page-heading"><div><p class="eyebrow">OPERATIONS</p><h2>Maintenance tracker</h2><p class="muted">Update each issue as the repair progresses.</p></div><button class="primary" id="maintenanceExport">Export CSV ↓</button></div>
+        <article class="panel"><div class="table-wrap"><table><thead><tr><th>ID</th><th>Location</th><th>Issue</th><th>Status</th><th>Update status</th></tr></thead><tbody id="maintenanceRows"></tbody></table></div></article>
+      </section>
+
+      <section id="analytics" class="view hidden">
+        <div class="page-heading"><div><p class="eyebrow">IMPACT</p><h2>Water-saving analytics</h2><p class="muted">Simple estimates based on demonstration data.</p></div></div>
+        <div class="stats">
+          <article class="stat"><span>💧 Estimated water saved</span><strong id="analyticsSaved">1,250 L</strong><small>Assumed repaired leaks</small></article>
+          <article class="stat"><span>🛠 Repair completion</span><strong id="completion">50%</strong><small>Resolved / total reports</small></article>
+          <article class="stat"><span>📍 Locations monitored</span><strong>4</strong><small>Example campus locations</small></article>
+          <article class="stat"><span>🌱 Conservation goal</span><strong>5,000 L</strong><small>Illustrative weekly goal</small></article>
+        </div>
+        <article class="panel"><h3>AI report preparation</h3><p class="muted">This demo can export its current data for analysis by your Strands Harness agent.</p><button class="primary" id="aiExport">Export data for AI report</button><p id="aiMessage" class="muted"></p></article>
+      </section>
+      <footer>© AquaGuard Demo · No real sensors connected · All readings and savings are simulated.</footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
